@@ -111,9 +111,10 @@ class ServoButton(wx.Button):
 
 class MyRobotUi(wx.Frame):
     # Interface visuelle pour déboguage du RasPiBot.py
+    
     def __init__(self, parent, title):
         wx.Frame.__init__(self, parent, title=title, size=(800, 800))
-
+		
         BUTTON_SIZE = (160, 30); X1_POS = 30; X2_POS = 200; Y_POS = 40
 
         self.panel = wx.Panel(self, pos=(X1_POS, Y_POS)) # up button panel
@@ -286,6 +287,16 @@ class MyRobotUi(wx.Frame):
 
     def on_LoadRobot(self, event):
 		self.logger.AppendText(" Selected on Load Robot \n")
+		filename = wx.FileSelector("Choose a file to open")
+
+		if filename.strip():
+			# work with the file
+			self.logger.AppendText(" Load Robot " + filename + " \n")
+			_methods = Methods()
+			_methods.loadRobot(filename)
+			self.Update()
+		# else: cancelled by user
+
 
     def on_NewRobot(self, event):
 		self.logger.AppendText(" Selected on New Robot \n")
@@ -295,6 +306,7 @@ class MyRobotUi(wx.Frame):
 		
     def on_LoadSequence(self, event):
 		self.logger.AppendText(" Selected on Load Sequence \n")
+		
 
     def on_NewSequence(self, event):
 		self.logger.AppendText(" Selected on New Sequence \n")

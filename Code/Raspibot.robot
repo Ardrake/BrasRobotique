@@ -1,0 +1,1 @@
+[["Head", 0], ["Neck", 0], ["Left shoulder", 0], ["Left bicep", 0], ["Left hand", 0], ["Left hip", 0], ["Left knee", 0], ["Left ankle", 0], ["Right shoulder", 0], ["Right bicep", 0], ["Right hand", 0], ["Right hip", 0], ["Right knee", 0], ["Right ankle", 0]]
