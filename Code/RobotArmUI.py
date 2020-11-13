@@ -15,8 +15,6 @@ from time import sleep
 
 servo_list = []
 
-
-
 pwm = PWM(0x40)
 servoMin = 150
 servoMax = 600
@@ -266,21 +264,47 @@ class MyRobotUi(wx.Frame):
         # set events
         self.Bind(wx.EVT_MENU, self.on_about, menu_item_about)
         self.Bind(wx.EVT_MENU, self.on_exit, menu_item_exit)
+        
+        self.Bind(wx.EVT_MENU, self.on_LoadRobot, menu_item_robot_load)
+        self.Bind(wx.EVT_MENU, self.on_NewRobot, menu_item_robot_new)
+        self.Bind(wx.EVT_MENU, self.on_EditRobot, menu_item_robot_edit)
 
+        self.Bind(wx.EVT_MENU, self.on_LoadSequence, menu_item_sequenceur_load)
+        self.Bind(wx.EVT_MENU, self.on_NewSequence, menu_item_sequenceur_new)
+        self.Bind(wx.EVT_MENU, self.on_EditSequence, menu_item_sequenceur_edit)
+        
         self.Show(True)
 
     def on_about(self, e):
         print("On about clicked")
-        dlg = wx.MessageDialog(self, "About RasPiBot was clicked", "About", wx.OK)
+        dlg = wx.MessageDialog(self, "RasPiBot Robot Arm by Andre Cooke", "About", wx.OK)
         dlg.ShowModal()  # Show it
         dlg.Destroy()  # finally destroy it when finished.
 
     def on_exit(self, e):
         self.Close(True)  # Close the frame.
 
+    def on_LoadRobot(self, event):
+		self.logger.AppendText(" Selected on Load Robot \n")
+
+    def on_NewRobot(self, event):
+		self.logger.AppendText(" Selected on New Robot \n")
+		
+    def on_EditRobot(self, event):
+		self.logger.AppendText(" Selected on Edit Robot \n")
+		
+    def on_LoadSequence(self, event):
+		self.logger.AppendText(" Selected on Load Sequence \n")
+
+    def on_NewSequence(self, event):
+		self.logger.AppendText(" Selected on New Sequence \n")
+		
+    def on_EditSequence(self, event):
+		self.logger.AppendText(" Selected on Edit Sequence \n")		
+
     def click_on(self, event):
-        name = event.GetEventObject().bname
-        self.logger.AppendText(" Click on object with Id {} {} \n".format(event.GetId(), name))
+		name = event.GetEventObject().bname
+		self.logger.AppendText(" Click on object with Id {} {} \n".format(event.GetId(), name))
 
     def OnRadiogroup(self, e):
         rb = e.GetEventObject()
