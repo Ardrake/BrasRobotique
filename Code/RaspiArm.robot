@@ -1,0 +1,1 @@
+[["Tourelle", 0], ["Bras Principale", 0], ["Bras Secondaire", 0], ["Pince", 0], ["Rampe", 0]]
